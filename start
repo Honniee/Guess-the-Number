@@ -1,0 +1,67 @@
+    using System;
+    
+    namespace PogChallengeStart{
+        
+        class Program
+        {
+            static void Main (string[] args)
+            {
+                // to generate random number
+                Random random_number_generator = new Random(); // Generate a random number generator 
+                int random_umber = random_number_generator.Next(20); // Generate a random number between 0 (inclusive) and 20 (exclusive)
+
+                // Welcome message
+                Console.WriteLine("Let's Play 'Guess the Number'");
+                Console.WriteLine("");
+                
+                // Asking the user for their name
+                Console.Write("Enter your name: ");
+                string userName = Console.ReadLine(); // Read the user's name from input
+                Console.WriteLine("");
+                
+                // Displaying the instruction 
+                Console.WriteLine($"Welcome, {userName}, Let's Play 'Guess the Number'");
+                Console.WriteLine("Guess a number between 0 and 20.");
+                Console.WriteLine("Enter -1 to terminate the program.");
+                Console.WriteLine("");
+                
+                
+                int number_of_guesses = 0; // to keep track of the number of guesses
+                int player_guess;  // to store the player's guess
+                
+                while (true)
+                {
+                    Console.Write("Enter your guess: ");
+                    player_guess = int.Parse(Console.ReadLine()); // Read the user's input and parse it to an integer
+                    
+                    // Check if the player wants to terminate the program
+                    if (player_guess == -1)
+                    {
+                        Console.WriteLine("Terminating the program. Thanks for playing!");
+                        break;
+                    }
+    
+                    number_of_guesses++; // Increment the number of guesses
+                    
+                    // Compare the player's guess with the random number
+                    if (player_guess < random_umber)
+                    {
+                        Console.WriteLine("Nope, higher than that."); // Inform the player to guess higher
+                    }
+                    else if (player_guess > random_umber)
+                    {
+                        Console.WriteLine("Nope, lower than that."); // Inform the player to guess lower
+                    }
+                    else
+                    {
+                        // Player guessed correctly
+                        Console.WriteLine($"Congratulations, {userName}! You guessed the number {random_umber}.");
+                        Console.WriteLine($"Number of guesses: {number_of_guesses}");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+   
+    
